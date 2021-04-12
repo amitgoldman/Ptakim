@@ -1,5 +1,5 @@
 from django.urls import path
-from rest_framework_nested import routers
+from rest_framework import routers
 from Tasks.views import TaskViewSet, BucketViewSet
 
 router = routers.DefaultRouter()

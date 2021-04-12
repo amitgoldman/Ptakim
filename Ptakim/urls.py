@@ -15,10 +15,13 @@ schema_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
-
 urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-json'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('tasks/', include('Tasks.urls')),
+    path('users/', include('users.urls')),
     path('admin/', admin.site.urls),
 ]
+
+
+
