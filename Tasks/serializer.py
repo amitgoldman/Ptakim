@@ -3,6 +3,7 @@ from Tasks.models import Task, Bucket
 
 
 class BucketSerializer(serializers.ModelSerializer):
+    tasks_count = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Bucket
@@ -11,7 +12,11 @@ class BucketSerializer(serializers.ModelSerializer):
             'title',
             'menger',
             'created',
+            'tasks_count'
         )
+
+    def get_tasks_count(self, obj) -> int:
+        return Task.objects.filter(bucket__id=obj.id).count()
 
 
 class TaskSerializer(serializers.ModelSerializer):

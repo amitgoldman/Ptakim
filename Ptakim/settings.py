@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # My apps
     'Tasks',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Ptakim.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 2
+}
 
 TEMPLATES = [
     {
