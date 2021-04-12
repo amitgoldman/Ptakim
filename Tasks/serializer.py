@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from Tasks.models import Task, TaskList
+from Tasks.models import Task, Bucket
 
 
-class TaskListSerializer(serializers.ModelSerializer):
+class BucketSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = TaskList
+        model = Bucket
         fields = (
             'title',
             'menger',
@@ -21,7 +21,7 @@ class TaskSerializer(serializers.ModelSerializer):
             'title',
             'description',
             'assigner',
-            'task_list',
+            'bucket',
             'created',
             'modified',
             'done',

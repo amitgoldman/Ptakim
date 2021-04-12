@@ -2,10 +2,10 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 
-class TaskList(models.Model):
+class Bucket(models.Model):
     title = models.CharField(max_length=32)
 
-    menger = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="task_list_menger")
+    menger = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="bucket_menger")
 
     created = models.DateTimeField(auto_now=True)
 
@@ -21,7 +21,7 @@ class Task(models.Model):
     description = models.CharField(max_length=256)
 
     assigner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="task_owner")
-    task_list = models.ForeignKey(TaskList, on_delete=models.CASCADE, related_name="task_list")
+    bucket = models.ForeignKey(Bucket, on_delete=models.CASCADE, related_name="bucket")
 
     created = models.DateTimeField(auto_now=True)
     modified = models.DateTimeField(auto_now_add=True)
@@ -29,7 +29,7 @@ class Task(models.Model):
     done = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.task_list}'s {self.title}"
+        return f"{self.bucket}'s {self.title}"
 
     def __repr__(self):
         return self.__str__()

@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from Tasks.models import Bucket, Task
+
+admin.site.register(Bucket)
+admin.site.register(Task)
+
+
